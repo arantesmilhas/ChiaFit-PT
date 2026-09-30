@@ -14,8 +14,9 @@ Versão da oferta do Método Chia destinada a Portugal, mantendo os textos em po
 
 ## Checkouts
 
-Os checkouts de Portugal estão temporariamente marcados como
-`#checkout-pt-pendente` e devem ser substituídos antes do lançamento.
+Os checkouts dos planos Básico, Premium e Gummy estão configurados na Hotmart.
+O checkout da Calistenia permanece temporariamente marcado como
+`#checkout-pt-pendente` e deve ser substituído antes do lançamento.
 
 ## Desenvolvimento local
 
