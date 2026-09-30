@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://api.astroluz.site/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WTLRH957");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Presente Especial — Receita Digital de Gummies Caseiros</title>
+    <meta
+      name="description"
+      content="Recebeu um presente: acesso imediato à receita digital completa de gomas caseiras, com instruções passo a passo para preparar em casa."
+    />
+    <meta property="og:title" content="Presente Especial — Receita Digital de Gummies Caseiros" />
+    <meta
+      property="og:description"
+      content="Receita digital e instruções passo a passo para preparar a sua própria versão em casa."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../images/favicon.png" type="image/png" />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --fg: #fafafa;
+        --muted: #a1a1aa;
+        --green: #4ade80;
+        --green-soft: rgba(74, 222, 128, 0.12);
+        --pink: #ff2e6a;
+        --violet: #7c3aed;
+        --magenta: #e5399f;
+        --gold: #f5cf6b;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family:
+          ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      canvas#confetti {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 5;
+      }
+      .wrap {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 28rem;
+        margin: 0 auto;
+        padding: 2rem 1.25rem;
+      }
+      .gift-screen {
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        text-align: center;
+      }
+      .hi {
+        font-size: 1.6rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        color: var(--gold);
+        text-shadow: 0 0 22px rgba(245, 207, 107, 0.45);
+      }
+      .hi + p {
+        margin-top: 0.75rem;
+        font-size: 1.05rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1.25;
+      }
+      .hint {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--gold);
+      }
+      /* ---- caixa de presente roxa da versão anterior ---- */
+      .gift {
+        position: relative;
+        z-index: 30;
+        width: 11rem;
+        height: 11rem;
+        display: grid;
+        place-items: center;
+        overflow: visible;
+        border: 1px solid rgba(245, 207, 107, 0.6);
+        border-radius: 2rem;
+        background: linear-gradient(150deg, var(--violet), var(--magenta));
+        box-shadow: 0 25px 70px -18px var(--magenta), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+       animation: giftPulse 1.15s ease-in-out infinite;
+      }
+      .gift:active {
+        transform: scale(0.96);
+      }
+      .gift .halo {
+        position: absolute;
+        inset: -18%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(229, 57, 159, 0.55) 0%, transparent 68%);
+        filter: blur(18px);
+        animation: halo 2.6s ease-in-out infinite;
+      }
+      .gift .ribbon-v,
+      .gift .ribbon-h,
+      .gift .lid-shine {
+        position: absolute;
+        pointer-events: none;
+      }
+      .gift .ribbon-v {
+        inset-block: 0;
+        left: 50%;
+        width: 1.25rem;
+        transform: translateX(-50%);
+        background: rgba(245, 207, 107, 0.92);
+      }
+      .gift .ribbon-h {
+        inset-inline: 0;
+        top: 50%;
+        height: 1.25rem;
+        transform: translateY(-50%);
+        background: rgba(245, 207, 107, 0.92);
+      }
+      .gift .lid-shine {
+        inset: 0 0 auto;
+        height: 33%;
+        border-radius: 2rem 2rem 0 0;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .gift-icon {
+        position: relative;
+        z-index: 2;
+        width: 6rem;
+        height: 6rem;
+        color: #fff;
+        filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
+      }
+      .sparkle {
+        position: absolute;
+        z-index: 3;
+        color: var(--gold);
+        font-size: 2rem;
+        line-height: 1;
+        pointer-events: none;
+        animation: shine 2s ease-in-out infinite;
+      }
+      .sparkle.one { right: -0.5rem; top: -0.75rem; }
+      .sparkle.two { left: -0.7rem; bottom: -0.7rem; color: #fff; font-size: 1.5rem; animation-delay: 0.45s; }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-1.2deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(1.2deg);
+        }
+      }
+      @keyframes giftPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+      @keyframes halo {
+        0%,
+        100% {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.9;
+          transform: scale(1.1);
+        }
+      }
+      @keyframes shine {
+        0%,
+        100% {
+          opacity: 0.25;
+        }
+        50% {
+          opacity: 0.9;
+        }
+      }
+      /* ---- offer ---- */
+      .offer {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        animation: fade 0.35s ease-out both;
+      }
+      .offer.on {
+        display: flex;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+      }
+      .timer {
+        border: 1px solid rgba(255, 46, 106, 0.6);
+        background: rgba(255, 46, 106, 0.12);
+        border-radius: 1rem;
+        padding: 0.85rem 1rem;
+        text-align: center;
+      }
+      .timer span {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--pink);
+      }
+      .timer strong {
+        display: block;
+        margin-top: 0.25rem;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+        font-size: 2.5rem;
+        font-weight: 900;
+        font-variant-numeric: tabular-nums;
+      }
+      h1.head {
+        font-size: 1.28rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1.3;
+        text-align: center;
+      }
+      h1.head em {
+        font-style: normal;
+        background: var(--pink);
+        color: #fff;
+        padding: 0.1rem 0.4rem;
+        border-radius: 0.4rem;
+      }
+      .sub {
+        margin-top: 0.5rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1.3;
+      }
+      .badge {
+        display: inline-block;
+        margin: 0.75rem auto 0;
+        border: 1px solid rgba(74, 222, 128, 0.5);
+        background: var(--green-soft);
+        color: var(--green);
+        border-radius: 999px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .center {
+        text-align: center;
+      }
+     figure img {
+  width: 100%;
+  height: 370px;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.9);
+  display: block;
+}
+      figcaption {
+        margin-top: 0.5rem;
+        text-align: center;
+        font-size: 0.68rem;
+        font-style: italic;
+        color: var(--muted);
+      }
+      .combo {
+        border: 2px solid rgba(229, 57, 159, 0.5);
+        border-radius: 1rem;
+        padding: 1rem;
+        text-align: center;
+        background: linear-gradient(140deg, rgba(124, 58, 237, 0.28), rgba(229, 57, 159, 0.18));
+      }
+      .combo p:first-child {
+        font-size: 0.86rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1.35;
+      }
+      .combo .duo {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-shadow: 0 0 20px rgba(245, 207, 107, 0.5);
+      }
+      .combo .txt {
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      ul.benefits {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      ul.benefits li {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        font-size: 0.86rem;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      ul.benefits i {
+        flex: 0 0 auto;
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-top: 0.1rem;
+        border-radius: 0.4rem;
+        background: var(--green);
+        color: #0a0a0a;
+        display: grid;
+        place-items: center;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 0.8rem;
+      }
+      .price {
+        border: 2px solid var(--green);
+        background: rgba(74, 222, 128, 0.08);
+        border-radius: 1rem;
+        padding: 1.25rem 1rem;
+        text-align: center;
+      }
+      .price .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+      .price .tags span {
+        border-radius: 999px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        background: rgba(255, 46, 106, 0.18);
+        color: var(--muted);
+      }
+      .price .tags .off {
+        background: var(--pink);
+        color: #fff;
+        font-weight: 900;
+      }
+      .price s {
+        color: var(--pink);
+      }
+      .price .label {
+        margin-top: 1rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: var(--green);
+      }
+      .price .value {
+        margin-top: 0.25rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 0.15rem;
+        color: var(--green);
+        text-shadow: 0 0 18px rgba(74, 222, 128, 0.5);
+      }
+      .price .value b:first-child,
+      .price .value b:last-child {
+        font-size: 1.5rem;
+        font-weight: 900;
+      }
+      .price .value b.big {
+        font-size: 3.75rem;
+        line-height: 1;
+        font-weight: 900;
+      }
+      .price .save {
+        margin-top: 0.75rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      a.cta {
+        display: block;
+        border-radius: 1rem;
+        background: var(--green);
+        color: #0a0a0a;
+        padding: 1.1rem 1.5rem;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.45);
+        }
+        50% {
+          transform: scale(1.02);
+          box-shadow: 0 0 0 14px rgba(74, 222, 128, 0);
+        }
+      }
+      .fine {
+        text-align: center;
+        font-size: 0.68rem;
+        line-height: 1.6;
+        color: var(--muted);
+        padding-bottom: 1.5rem;
+      }
+      @media (min-width: 640px) {
+        .hi {
+          font-size: 1.9rem;
+        }
+        .gift {
+          width: 13rem;
+          height: 13rem;
+        }
+        h1.head {
+          font-size: 1.5rem;
+        }
+        .timer strong {
+          font-size: 3rem;
+        }
+        .price .value b.big {
+          font-size: 4.5rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="confetti"></canvas>
+
+    <main class="wrap">
+      <!-- TELA DO PRESENTE -->
+      <section class="gift-screen" id="giftScreen">
+        <div>
+          <h1 class="hi">🎁 PARABÉNS!</h1>
+          <p>Recebeu um presente especial!</p>
+        </div>
+
+        <button class="gift" id="giftBtn" type="button" aria-label="Abrir presente">
+          <span class="halo" aria-hidden="true"></span>
+          <span class="ribbon-v" aria-hidden="true"></span>
+          <span class="ribbon-h" aria-hidden="true"></span>
+          <span class="lid-shine" aria-hidden="true"></span>
+          <svg class="gift-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="18" height="13" rx="2" />
+            <path d="M12 8v13M3 12h18M7.5 8C5.2 8 4 6.8 4 5.4 4 4.1 5 3 6.4 3 8.6 3 10.4 5.8 12 8M16.5 8C18.8 8 20 6.8 20 5.4 20 4.1 19 3 17.6 3 15.4 3 13.6 5.8 12 8" />
+          </svg>
+          <span class="sparkle one" aria-hidden="true">✦</span>
+          <span class="sparkle two" aria-hidden="true">✦</span>
+        </button>
+
+        <p class="hint">Clique no presente para o abrir</p>
+      </section>
+
+      <!-- OFERTA -->
+      <section class="offer" id="offer">
+        <div class="timer">
+          <span>⏱ Oferta especial termina em</span>
+          <strong id="clock">05:00</strong>
+        </div>
+
+        <header>
+          <h1 class="head">Perca <em>10 quilos em 7 dias</em></h1>
+          <p class="sub">consumindo uma goma de manhã e outra à noite</p>
+          <p class="center"><span class="badge">📱 Receita digital + passo a passo</span></p>
+        </header>
+
+        <figure>
+          <img
+            src="img/gummy-jar.jpg"
+            width="1024"
+            height="1024"
+            alt="Representação ilustrativa dos gummies caseiros preparados com a receita"
+          />
+          <figcaption>Imagem ilustrativa da preparação.</figcaption>
+        </figure>
+
+        <div class="combo">
+          <p>✨ A combinação perfeita para potencializar seus resultados</p>
+          <p class="duo">Gummy + Mounjaro de Chia</p>
+          <p class="txt">
+            A Gummy foi desenvolvida para complementar o Mounjaro de Chia da sua primeira compra:
+            juntos, eles formam um protocolo mais completo para apoiar a sua jornada de
+            emagrecimento.
+          </p>
+        </div>
+
+        <ul class="benefits">
+          <li>
+            <i>✓</i
+            ><span
+              >Potencie o seu processo de perda de peso — combine a Gummy com o Mounjaro de Chia da
+              sua primeira compra e tenha um protocolo ainda mais completo.</span
+            >
+          </li>
+          <li>
+            <i>✓</i><span>Praticidade no dia a dia: uma goma de manhã e outra à noite, sem complicações.</span>
+          </li>
+          <li><i>✓</i><span>Ingredientes simples e fáceis de encontrar.</span></li>
+          <li><i>✓</i><span>Instruções completas, da preparação ao armazenamento.</span></li>
+          <li><i>✓</i><span>Acesso digital imediato após a compra.</span></li>
+        </ul>
+
+        <div class="price">
+          <div class="tags">
+            <span>Oferta para Portugal</span>
+          </div>
+          <p class="label">Preço a confirmar</p>
+          <p class="value"><b class="big">Em breve</b></p>
+        </div>
+
+        <a class="cta" id="cta" href="#checkout-pt-pendente">Quero receber a receita</a>
+
+        <p class="fine">
+          Produto digital. Prepare em casa — receita simples, prática e acessível, com
+          acesso imediato após a confirmação do pagamento.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      // COLE O SEU LINK DE CHECKOUT AQUI
+      const CHECKOUT_URL = "#checkout-pt-pendente";
+      document.getElementById("cta").href = CHECKOUT_URL;
+
+      /* ---------- confetes coloridos da versão anterior ---------- */
+      const canvas = document.getElementById("confetti");
+      const ctx = canvas.getContext("2d");
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let dpr = 1;
+      function resize() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = innerWidth * dpr;
+        canvas.height = innerHeight * dpr;
+      }
+      resize();
+      addEventListener("resize", resize);
+
+      const PALETTE = ["#a855f7", "#e879f9", "#ff2e88", "#facc15", "#fde68a", "#ffffff"];
+      let parts = [];
+
+      function burst(count, x, y, power) {
+        for (let i = 0; i < count; i++) {
+          const a = Math.random() * Math.PI * 2;
+          const s = power * (0.35 + Math.random() * 0.85);
+          parts.push({
+            x: x * innerWidth,
+            y: y * innerHeight,
+            vx: Math.cos(a) * s,
+            vy: Math.sin(a) * s - power * 0.35,
+            w: 4 + Math.random() * 6,
+            h: 7 + Math.random() * 10,
+            rot: Math.random() * Math.PI,
+            vr: (Math.random() - 0.5) * 0.22,
+            color: PALETTE[(Math.random() * PALETTE.length) | 0],
+            life: 1,
+            decay: 0.004 + Math.random() * 0.006,
+            wob: Math.random() * Math.PI * 2,
+          });
+        }
+      }
+
+      function celebrate() {
+        if (reduce) return;
+        burst(240, 0.5, 0.62, 14);
+        burst(140, 0.02, 0.75, 13);
+        burst(140, 0.98, 0.75, 13);
+        setTimeout(() => burst(180, 0.5, 0.4, 11), 180);
+        setTimeout(() => burst(90, 0.5, 0.55, 8), 420);
+      }
+
+      function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.scale(dpr, dpr);
+        for (const p of parts) {
+          p.wob += 0.1;
+          p.vy += 0.14;
+          p.vx *= 0.99;
+          p.x += p.vx + Math.sin(p.wob) * 0.6;
+          p.y += p.vy;
+          p.rot += p.vr;
+          p.life -= p.decay;
+          if (p.life <= 0) continue;
+          ctx.globalAlpha = Math.max(0, Math.min(1, p.life));
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          const squash = Math.abs(Math.cos(p.wob)); // brilho metálico ao girar
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w * (0.35 + squash * 0.65), p.h);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        ctx.restore();
+        parts = parts.filter((p) => p.life > 0 && p.y < innerHeight + 60);
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+      celebrate();
+
+      /* ---------- abrir presente: clique disponível imediatamente ---------- */
+      document.getElementById("giftBtn").addEventListener("click", () => {
+        document.getElementById("giftScreen").style.display = "none";
+        document.getElementById("offer").classList.add("on");
+        celebrate();
+        startClock();
+      });
+
+      /* ---------- cronômetro 05:00 ---------- */
+      let left = 300,
+        ticking = false;
+      function startClock() {
+        if (ticking) return;
+        ticking = true;
+        const el = document.getElementById("clock");
+        setInterval(() => {
+          if (left > 0) left--;
+          el.textContent =
+            String(Math.floor(left / 60)).padStart(2, "0") + ":" + String(left % 60).padStart(2, "0");
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
