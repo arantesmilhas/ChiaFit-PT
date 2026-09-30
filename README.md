@@ -1,6 +1,6 @@
 # ChiaFit Portugal
 
-Oferta portuguesa do Método Chia, publicada via GitHub Pages.
+Versão da oferta do Método Chia destinada a Portugal, mantendo os textos em português brasileiro e publicada via GitHub Pages.
 
 ## Domínio
 
