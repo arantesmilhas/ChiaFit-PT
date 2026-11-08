@@ -606,12 +606,12 @@
   media-id="fuiut91l37"
   aspect="0.5625">
 </wistia-player>
-          <div style="margin-top: 1.5rem">
-            <button class="btn-cta js-oferta hidden">Obter meu plano personalizado agora</button>
+          <div class="timed-offer hidden" style="margin-top: 1.5rem">
+            <button class="btn-cta js-oferta">Obter meu plano personalizado agora</button>
           </div>
         </section>
 
-        <section class="reveal">
+        <section class="reveal timed-offer hidden">
           <h2>O que você vai receber</h2>
           <div class="card" style="margin-top: 1.5rem">
             <div class="benefit">
@@ -658,7 +658,7 @@
           </div>
         </section>
 
-        <section class="reveal" id="oferta" style="scroll-margin-top: 1.5rem">
+        <section class="reveal timed-offer hidden" id="oferta" style="scroll-margin-top: 1.5rem">
           <div class="offer">
             <div>
               <span class="badge">🔥 Oferta especial</span>
@@ -691,30 +691,30 @@
               </p>
               <p class="muted small">🔒 Compra 100% segura</p>
               <div style="margin-top: 1.5rem">
-                <button class="btn-cta js-oferta hidden">Obter meu plano personalizado agora</button>
+                <button class="btn-cta js-oferta">Obter meu plano personalizado agora</button>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="reveal">
+        <section class="reveal timed-offer hidden">
           <h2>Resultados que nos deixam orgulhosos</h2>
           <div class="row" id="resultados"></div>
           <p class="muted small center">Resultados individuais podem variar.</p>
         </section>
 
-        <section class="reveal">
+        <section class="reveal timed-offer hidden">
           <h2>🎁 + Bônus exclusivos</h2>
           <div class="grid2" id="bonus"></div>
         </section>
 
-        <section class="reveal">
+        <section class="reveal timed-offer hidden">
           <h2>Perguntas frequentes</h2>
           <div id="faq" style="margin-top: 1.5rem"></div>
         </section>
 
-        <footer class="reveal center mt">
-          <button class="btn-cta js-oferta hidden">Obter meu plano personalizado agora</button>
+        <footer class="reveal timed-offer hidden center mt">
+          <button class="btn-cta js-oferta">Obter meu plano personalizado agora</button>
           <p class="muted small" style="margin-top: 0.75rem">
             🔒 Compra 100% segura • Pagamento único
           </p>
@@ -785,8 +785,8 @@
 
           if (Number.isFinite(currentTime) && currentTime >= revealAt) {
             clearInterval(timer);
-            document.querySelectorAll(".js-oferta").forEach((button) => {
-              button.classList.remove("hidden");
+            document.querySelectorAll(".timed-offer").forEach((section) => {
+              section.classList.remove("hidden");
             });
           }
         }, 250);
