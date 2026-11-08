@@ -607,7 +607,7 @@
   aspect="0.5625">
 </wistia-player>
           <div style="margin-top: 1.5rem">
-            <button class="btn-cta js-oferta">Obter meu plano personalizado agora</button>
+            <button class="btn-cta js-oferta hidden">Obter meu plano personalizado agora</button>
           </div>
         </section>
 
@@ -691,7 +691,7 @@
               </p>
               <p class="muted small">🔒 Compra 100% segura</p>
               <div style="margin-top: 1.5rem">
-                <button class="btn-cta js-oferta">Obter meu plano personalizado agora</button>
+                <button class="btn-cta js-oferta hidden">Obter meu plano personalizado agora</button>
               </div>
             </div>
           </div>
@@ -714,7 +714,7 @@
         </section>
 
         <footer class="reveal center mt">
-          <button class="btn-cta js-oferta">Obter meu plano personalizado agora</button>
+          <button class="btn-cta js-oferta hidden">Obter meu plano personalizado agora</button>
           <p class="muted small" style="margin-top: 0.75rem">
             🔒 Compra 100% segura • Pagamento único
           </p>
@@ -769,7 +769,28 @@
         vendas.classList.add("rise");
         window.scrollTo(0, 0);
         initReveals();
+        initOfferReveal();
       });
+
+      function initOfferReveal() {
+        const revealAt = 34.517;
+        const timer = setInterval(() => {
+          const player = document.querySelector("wistia-player[media-id='fuiut91l37']");
+          const currentTime =
+            typeof player?.currentTime === "number"
+              ? player.currentTime
+              : typeof player?.getCurrentTime === "function"
+                ? player.getCurrentTime()
+                : NaN;
+
+          if (Number.isFinite(currentTime) && currentTime >= revealAt) {
+            clearInterval(timer);
+            document.querySelectorAll(".js-oferta").forEach((button) => {
+              button.classList.remove("hidden");
+            });
+          }
+        }, 250);
+      }
 
       // ---------- Etapa 2: conteúdo ----------
   const RESULTS = [
