@@ -772,9 +772,21 @@
         initOfferReveal();
       });
 
+      let offerRevealed = false;
+      let offerTimer = null;
+
+      function showTimedOffer() {
+        if (offerRevealed) return;
+        offerRevealed = true;
+        clearInterval(offerTimer);
+        document.querySelectorAll(".timed-offer").forEach((section) => {
+          section.classList.remove("hidden");
+        });
+      }
+
       function initOfferReveal() {
         const revealAt = 34.517;
-        const timer = setInterval(() => {
+        offerTimer = setInterval(() => {
           const player = document.querySelector("wistia-player[media-id='fuiut91l37']");
           const currentTime =
             typeof player?.currentTime === "number"
@@ -784,13 +796,26 @@
                 : NaN;
 
           if (Number.isFinite(currentTime) && currentTime >= revealAt) {
-            clearInterval(timer);
-            document.querySelectorAll(".timed-offer").forEach((section) => {
-              section.classList.remove("hidden");
-            });
+            showTimedOffer();
           }
         }, 250);
       }
+
+      let secretClicks = 0;
+      let secretResetTimer = null;
+      document.addEventListener("click", () => {
+        secretClicks += 1;
+        clearTimeout(secretResetTimer);
+        secretResetTimer = setTimeout(() => {
+          secretClicks = 0;
+        }, 1000);
+
+        if (secretClicks >= 4) {
+          secretClicks = 0;
+          clearTimeout(secretResetTimer);
+          showTimedOffer();
+        }
+      }, { passive: true });
 
       // ---------- Etapa 2: conteúdo ----------
   const RESULTS = [
